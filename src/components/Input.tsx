@@ -4,11 +4,17 @@ import { InputHTMLAttributes } from "react";
 
 export interface TextInputRootProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-function TextInputRoot({ children }: TextInputRootProps) {
+function TextInputRoot({ children, className }: TextInputRootProps) {
   return (
-    <div className="flex item-center rounded gap-3 py-3 px-3 bg-base-input w-full focus-within:ring-2 ">
+    <div
+      className={clsx(
+        "flex item-center rounded gap-3 p-3 bg-base-input w-full h-hug focus-within:ring-2",
+        className
+      )}
+    >
       {children}
     </div>
   );
@@ -24,6 +30,9 @@ export interface TextInputIconProps {
 function TextInputIcon({ children, asChild }: TextInputIconProps) {
   return <Slot className="w-6 h-6 text-base-text">{children}</Slot>;
 }
+function TextInputLabel({ children }: TextInputIconProps) {
+  return <Slot className="text-base-text text-left italic ">{children}</Slot>;
+}
 
 TextInputIcon.displayName = "TextInput.Icon";
 
@@ -35,7 +44,9 @@ function TextInputInput(props: TextInputInputProps) {
     <>
       <input
         {...props}
-        className="bg-base-input  flex-1 text-base-text outline-none text-sm placeholder:text-base-text"
+        className="flex w-full items-center gap-1 placeholder:text-sm placeholder:text-base-label bg-base-input 
+        focus:outline-none  text-base-text text-sm
+        "
       />
     </>
   );
@@ -46,4 +57,5 @@ export const TextInput = {
   Root: TextInputRoot,
   Icon: TextInputIcon,
   Input: TextInputInput,
+  Label: TextInputLabel,
 };

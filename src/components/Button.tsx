@@ -15,7 +15,7 @@ export function Button({ children, asChild, className, ...rest }: ButtonProps) {
       <Comp
         {...rest}
         className={clsx(
-          "flex items-center justify-center px-2 py-3 w-full h-[38px] bg-brand-yellow rounded-md font-bold text-sm leading-5 text-white hover:bg-brand-yellow-dark focus:outline-none focus:ring-2 focus:ring-brand-yellow-dark transition-colors",
+          "flex items-center justify-center p-4 h-hug bg-brand-yellow rounded-md font-bold text-sm leading-5 text-white hover:bg-brand-yellow-dark focus:outline-none focus:ring-2 focus:ring-brand-yellow-dark transition-colors",
           className
         )}
       >

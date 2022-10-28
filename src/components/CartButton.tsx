@@ -20,8 +20,7 @@ export function CartButton({
       <Comp
         {...rest}
         className={clsx(
-          "relative flex items-center justify-center w-[38px] h-[38px] px-2 py-3  rounded-md font-bold text-sm leading-5 text-white focus:outline-none focus:ring-2 focus:ring-brand-brand-purple transition-colors",
-
+          "relative flex items-center justify-center h-hug p-4 rounded-md font-bold text-sm leading-5 text-white focus:outline-none focus:ring-2 focus:ring-brand-brand-purple transition-colors",
           className
         )}
       >
