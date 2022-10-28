@@ -15,6 +15,7 @@ import * as Img from "../../assets/coffess/index";
 import { CartButton } from "../../components/CartButton";
 import { CartRemoveButton } from "../../components/CartRemoveButton";
 import { Button } from "../../components/Button";
+import { Link } from "react-router-dom";
 interface CheckoutProps {
   children?: ReactNode;
 }
@@ -220,7 +221,9 @@ export function Checkout({ children }: CheckoutProps) {
                   </span>
                 </div>
               </div>
-              <Button>CONFIRMAR PEDIDO</Button>
+              <Button asChild>
+                <Link to="/confirm">CONFIRMAR PEDIDO</Link>
+              </Button>
             </div>
           </div>
         </div>
