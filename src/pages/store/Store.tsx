@@ -268,7 +268,7 @@ export function Store() {
                     {price.toFixed(2)}
                   </span>
                 </div>
-                <div className="flex justify-center items-center gap-2">
+                <div className="flex justify-center items-center gap-2 h-hug">
                   <div className="flex justify-center items-center p-2 gap-2 bg-base-button rounded-md ">
                     <Minus
                       weight="fill"
@@ -283,7 +283,7 @@ export function Store() {
                     />
                   </div>
 
-                  <CartButton className="bg-brand-purple-dark hover:bg-brand-purple transition-colors ease-in-out  ">
+                  <CartButton className="bg-brand-purple-dark hover:bg-brand-purple transition-colors ease-in-out h-[38px] ">
                     <ShoppingCart
                       size={22}
                       className="text-white"
