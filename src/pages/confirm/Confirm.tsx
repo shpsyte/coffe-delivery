@@ -35,11 +35,11 @@ export function Confirm({ children }: CheckoutProps) {
         </div>
         <div className="flex">
           <div
-            className="w-1/2 flex-col p-[1px] gap-8 border rounded-md rounded-tr-[36px] rounded-bl-[36px] 
+            className="w-1/2 p-[1px] rounded-md rounded-tr-[36px] rounded-bl-[36px] 
             border-none bg-gradient-to-r from-[#DBAC2C] to-[#8047F8]
             overflow-hidden "
           >
-            <div className="flex-1 w-full h-full flex flex-col p-10 gap-32 bg-background border-none rounded-md rounded-tr-[36px] rounded-bl-[36px] ">
+            <div className="w-full h-full flex flex-col p-10 gap-8 bg-background border-none rounded-md rounded-tr-[36px] rounded-bl-[36px] ">
               <div className="flex gap-3">
                 <MapPin
                   className="bg-brand-purple text-white p-2 rounded-full"
@@ -48,7 +48,7 @@ export function Confirm({ children }: CheckoutProps) {
                 />
                 <div className="flex flex-col">
                   <span className="flex items-center self-stretch text-base text-base-subtitle">
-                    Entrega em <b>Rua João Daniel Martinelli, 102</b>
+                    Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
                   </span>
                   <span className="text-sm text-base-text block">
                     Farrapos - Porto Alegre, RS
@@ -89,7 +89,7 @@ export function Confirm({ children }: CheckoutProps) {
               </div>
             </div>
           </div>
-          <div>
+          <div className="flex items-center justify-center">
             <img className="object-fill " src={Hero} alt="" />
           </div>
         </div>
