@@ -1,6 +1,7 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../Context/CartContext";
 import { CartButton } from "../CartButton";
-import { CartControl } from "../CartControl";
 
 type Tags =
   | "Tradicional"
@@ -25,6 +26,8 @@ interface CardProps {
 
 export const Card = ({ product }: CardProps) => {
   const { id, img, tags, description, name, price } = product;
+  const { addProduct } = useContext(CartContext);
+  const [qty, setQty] = useState(0);
   return (
     <div
       key={id}
@@ -61,11 +64,41 @@ export const Card = ({ product }: CardProps) => {
           </span>
         </div>
         <div className="flex justify-center items-center gap-2 h-hug">
-          <CartControl>
+          <div className="flex gap-1">
+            <div className="flex justify-center items-center h-8 p-2 gap-2 bg-base-button rounded-md ">
+              <Minus
+                weight="fill"
+                className="text-brand-purple cursor-pointer"
+                onClick={() =>
+                  setQty((a) => {
+                    if (a > 0) {
+                      return a - 1;
+                    }
+                    return a;
+                  })
+                }
+              />
+              <span className="flex items-center justify-center text-base text-center text-base-title">
+                {qty}
+              </span>
+              <Plus
+                weight="fill"
+                className="text-brand-purple cursor-pointer"
+                onClick={(a) => {
+                  setQty((a) => a + 1);
+                }}
+              />
+            </div>
+
             <CartButton className="bg-brand-purple-dark hover:bg-brand-purple transition-colors ease-in-out h-[30px] ">
-              <ShoppingCart size={22} className="text-white" weight="fill" />
+              <ShoppingCart
+                size={22}
+                className="text-white"
+                weight="fill"
+                onClick={() => addProduct({ id, price, qty })}
+              />
             </CartButton>
-          </CartControl>
+          </div>
         </div>
       </div>
     </div>
