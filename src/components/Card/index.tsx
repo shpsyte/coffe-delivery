@@ -27,7 +27,7 @@ interface CardProps {
 export const Card = ({ product }: CardProps) => {
   const { id, img, tags, description, name, price } = product;
   const { addProduct } = useContext(CartContext);
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   return (
     <div
       key={id}
@@ -39,7 +39,10 @@ export const Card = ({ product }: CardProps) => {
         <div className="flex gap-1">
           {tags.map((tag) => {
             return (
-              <span className="bg-brand-yellow-light text-brand-yellow-dark py-1 px-2 flex items-center justify-center uppercase rounded-[100px] font-bold text-2xs ">
+              <span
+                key={tag}
+                className="bg-brand-yellow-light text-brand-yellow-dark py-1 px-2 flex items-center justify-center uppercase rounded-[100px] font-bold text-2xs "
+              >
                 {tag}
               </span>
             );
@@ -95,7 +98,7 @@ export const Card = ({ product }: CardProps) => {
                 size={22}
                 className="text-white"
                 weight="fill"
-                onClick={() => addProduct({ id, price, qty })}
+                onClick={() => addProduct({ ...product, qty })}
               />
             </CartButton>
           </div>

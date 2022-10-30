@@ -1,27 +1,13 @@
-import { ReactNode } from "react";
-import {
-  MapPin,
-  CurrencyDollar,
-  CreditCard,
-  Bank,
-  Money,
-  Minus,
-  Plus,
-  Trash,
-  Clock,
-} from "phosphor-react";
-import { TextInput } from "../../components/Input";
-import * as Img from "../../assets/coffess/index";
+import { MapPin, Money, Clock } from "phosphor-react";
+import { useContext } from "react";
 
-import { CartButton } from "../../components/CartButton";
-import { CartRemoveButton } from "../../components/CartRemoveButton";
-import { Button } from "../../components/Button";
-interface CheckoutProps {
-  children?: ReactNode;
-}
 import Hero from "../../assets/Illustration.png";
+import { CartContext } from "../../Context/CartContext";
 
-export function Confirm({ children }: CheckoutProps) {
+export function Confirm() {
+  const {
+    cartAddress: { bairro, cidade, uf, numero, rua, pgto },
+  } = useContext(CartContext);
   return (
     <>
       <div className="flex flex-col gap-10">
@@ -48,10 +34,13 @@ export function Confirm({ children }: CheckoutProps) {
                 />
                 <div className="flex flex-col">
                   <span className="flex items-center self-stretch text-base text-base-subtitle">
-                    Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                    Entrega em &nbsp;
+                    <strong>
+                      {rua}, {numero}
+                    </strong>
                   </span>
                   <span className="text-sm text-base-text block">
-                    Farrapos - Porto Alegre, RS
+                    {bairro}, {cidade} - {uf}
                   </span>
                 </div>
               </div>
@@ -83,7 +72,7 @@ export function Confirm({ children }: CheckoutProps) {
                     Pagamento na entrega
                   </span>
                   <span className="text-sm text-base-text font-bold">
-                    Cartão de Crédito
+                    {pgto}
                   </span>
                 </div>
               </div>

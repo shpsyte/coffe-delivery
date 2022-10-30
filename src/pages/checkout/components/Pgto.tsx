@@ -1,7 +1,12 @@
 import { CurrencyDollar, CreditCard, Bank, Money } from "phosphor-react";
+import { useFormContext } from "react-hook-form";
 import { CartButton } from "../../../components/CartButton";
 
 export function Pgto() {
+  const { register, setValue } = useFormContext();
+
+  const pgto = register("pgto");
+
   return (
     <div className="flex flex-col gap-10 bg-base-card rounded-md p-10 justify-center">
       <div className="flex gap-1">
@@ -16,19 +21,37 @@ export function Pgto() {
         </div>
       </div>
       <div className="flex gap-2 justify-between">
-        <CartButton className="flex-1 bg-base-button rounded-md p-4 flex gap-1 !justify-start h-hug ">
+        <CartButton
+          type="button"
+          onClick={() => {
+            setValue("pgto", "CARTÃO DE CRÉDITO");
+          }}
+          className="flex-1 bg-base-button rounded-md p-4 flex gap-1 !justify-start h-hug "
+        >
           <CreditCard className="text-brand-purple" size={18} />
           <span className="text-base-text font-normal uppercase flex items-center">
             Cartao de Crédito
           </span>
         </CartButton>
-        <CartButton className="flex-1 bg-base-button rounded-md p-4 flex gap-2 !justify-start h-hug ">
+        <CartButton
+          onClick={() => {
+            setValue("pgto", "CARTÃO DE DÉBITO");
+          }}
+          type="button"
+          className="flex-1 bg-base-button rounded-md p-4 flex gap-2 !justify-start h-hug "
+        >
           <Bank className="text-brand-purple" size={18} />
           <span className="text-base-text font-normal uppercase flex items-center">
             Cartao de Débito
           </span>
         </CartButton>
-        <CartButton className="flex-1 bg-base-button rounded-md p-4 flex gap-2 !justify-start h-hug ">
+        <CartButton
+          onClick={() => {
+            setValue("pgto", "DINHEIRO");
+          }}
+          type="button"
+          className="flex-1 bg-base-button rounded-md p-4 flex gap-2 !justify-start h-hug "
+        >
           <Money className="text-brand-purple" size={18} />
           <span className="text-base-text font-normal uppercase flex items-center">
             Dinheiro

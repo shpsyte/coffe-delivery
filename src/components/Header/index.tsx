@@ -7,7 +7,7 @@ import { CartContext } from "../../Context/CartContext";
 import { useContext } from "react";
 
 export function Header() {
-  const { total } = useContext(CartContext);
+  const { totalItems } = useContext(CartContext);
   return (
     <div className="fixed w-full max-w-6xl">
       <div className="bg-background h-[104px] flex justify-between items-center">
@@ -20,12 +20,18 @@ export function Header() {
             Porto Alegre, RS
           </Button>
           <CartButton className="bg-brand-yellow-light">
-            <ShoppingCart
-              className="text-brand-yellow-dark"
-              size={32}
-              weight="fill"
-            />
-            {total}
+            <Link to="/checkout">
+              <ShoppingCart
+                className="text-brand-yellow-dark"
+                size={32}
+                weight="fill"
+              />
+            </Link>
+            {totalItems > 0 && (
+              <span className="absolute top-[-10px] right-[-10px] bg-brand-yellow-dark rounded-full w-5 h-5 flex items-center justify-center text-brand-yellow-light">
+                {totalItems}
+              </span>
+            )}
           </CartButton>
         </div>
       </div>

@@ -1,11 +1,8 @@
 import { products } from "../../services/products";
 import { Hero } from "./componentes/Hero";
 import { Card } from "../../components/Card";
-import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext";
 
 export function Store() {
-  const { cart } = useContext(CartContext);
   return (
     <div className="flex flex-col">
       <Hero />

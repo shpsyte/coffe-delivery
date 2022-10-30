@@ -1,18 +1,30 @@
 import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
-import { InputHTMLAttributes } from "react";
+import {
+  InputHTMLAttributes,
+  forwardRef,
+  ForwardRefRenderFunction,
+} from "react";
 
 export interface TextInputRootProps {
   children: React.ReactNode;
   className?: string;
+  isValid?: boolean;
 }
 
-function TextInputRoot({ children, className }: TextInputRootProps) {
+function TextInputRoot({
+  children,
+  isValid = true,
+  className,
+}: TextInputRootProps) {
   return (
     <div
       className={clsx(
         "flex item-center rounded gap-3 p-3 bg-base-input w-full h-hug focus-within:ring-2",
-        className
+        className,
+        {
+          "border border-brand-yellow-dark": !isValid,
+        }
       )}
     >
       {children}
@@ -39,18 +51,21 @@ TextInputIcon.displayName = "TextInput.Icon";
 export interface TextInputInputProps
   extends InputHTMLAttributes<HTMLInputElement> {}
 
-function TextInputInput(props: TextInputInputProps) {
+const InputBase: ForwardRefRenderFunction<
+  HTMLInputElement,
+  TextInputInputProps
+> = (props: TextInputInputProps, ref) => {
   return (
-    <>
-      <input
-        {...props}
-        className="flex w-full items-center gap-1 placeholder:text-sm placeholder:text-base-label bg-base-input 
+    <input
+      {...props}
+      ref={ref}
+      className="flex w-full items-center gap-1 placeholder:text-sm placeholder:text-base-label bg-base-input 
         focus:outline-none  text-base-text text-sm
         "
-      />
-    </>
+    />
   );
-}
+};
+const TextInputInput = forwardRef(InputBase);
 TextInputInput.displayName = "TextInput.Input";
 
 export const TextInput = {
